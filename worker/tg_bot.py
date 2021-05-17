@@ -1,7 +1,6 @@
-from time import asctime
 import requests
 from telegram import Update
-from telegram.ext import Updater, MessageHandler, Filters, CommandHandler, CallbackContext
+from telegram.ext import Updater, CommandHandler, CallbackContext
 
 admins = ["sevadp", "lajulienn"]
 server = "http://193.178.169.224:5000/api/v1/parse/statistic?domain="
