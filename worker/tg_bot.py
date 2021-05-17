@@ -48,7 +48,7 @@ def metrics(update: Update, context: CallbackContext):
 
 
 def main():
-    updater = Updater("1871457808:AAHIhLXZ0ywRB-ZX6cEc8_NyNEi6616VYP0", use_context=True)
+    updater = Updater("", use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("help", help_bot))
     dp.add_handler(CommandHandler("metrics", metrics))
