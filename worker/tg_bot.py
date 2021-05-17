@@ -13,7 +13,8 @@ def get_metrics(domain="amazon.com"):
     if data == dict():
         return "Analyze Error"
 
-    b = f'Статистика за последний месяц\n\n\tВсего визитов: {data["visits"]}\n\tВремя на сайте: {data["avg_time_onsite"]}' \
+    b = f'Статистика за последний месяц\n\n\tВсего визитов: {data["visits"]}\n\tВремя на сайте:' \
+        f' {data["avg_time_onsite"]}' \
         f'\n\tСтраниц за визит: {data["pages_per_visit"]}\n\n\tГЕОГРАФИЯ\n\t'
 
     for i in data["best_geo"]:
