@@ -10,7 +10,26 @@ server = "http://193.178.169.224:5000/api/v1/parse/statistic?domain="
 def get_metrics(domain="amazon.com"):
     headers = {"ADMIN": "not_real_secret_key"}
     data = requests.get(server + domain, headers=headers).json()["data"]
-    return data
+    if data == dict():
+        return "Analyze Error"
+
+    b = f'Статистика за последний месяц\n\n\tВсего визитов: {data["visits"]}\n\tВремя на сайте: {data["avg_time_onsite"]}' \
+        f'\n\tСтраниц за визит: {data["pages_per_visit"]}\n\n\tГЕОГРАФИЯ\n\t'
+
+    for i in data["best_geo"]:
+        b += (i + " - " + data["best_geo"][i] + "\n\t")
+
+    b += "\n\n\tИСТОЧНИКИ ТРАФИКА\n\t"
+    names = {"banners": "Баннеры", "direct": "Прямой", "mails": "Почта",
+             "referrals": "Рефералы", "search": "Поиск", "social": "Соц. сети"}
+    for i in data["sources"]:
+        b += (names[i] + " - " + data["sources"][i] + "\n\t")
+
+    b += "\n\n\tРЕЙТИНГИ\n\t"
+    for i in data["ratings"]:
+        b += (i + " - " + data["ratings"][i] + "\n\t")
+
+    return b
 
 
 def help_bot(update: Update, context: CallbackContext):
