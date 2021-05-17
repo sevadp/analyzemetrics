@@ -1,8 +1,8 @@
-from flask_restplus import Namespace, Resource
+from flask_restx import Namespace, Resource
 from flask import request, jsonify
 
 from project.decorators import admin_secure
-# from project.utils.base.parse_metrics import parse_site
+from project.utils.base.parse_metrics import parse_site
 
 
 api = Namespace('Parse', description='Parsing service')
@@ -21,7 +21,6 @@ api = Namespace('Parse', description='Parsing service')
     }
 )
 class GetStatistic(Resource):
-    # @admin_secure
+    @admin_secure
     def get(self):
-        # return jsonify(parse_site(request.params.get("domain")))
-        return {}
+        return jsonify(parse_site(request.args.get("domain")))

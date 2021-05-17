@@ -1,9 +1,9 @@
 from flask import Flask, Blueprint
+from flask_restx import Api
 from flask_cors import CORS
 import os
 
 from project import config
-from project.extensions import ExtendedApi
 from project.utils.base.const import swagger_authorizations
 
 
@@ -13,7 +13,7 @@ app.secret_key = app.config['SECRET_KEY']
 
 api_blueprint = Blueprint('Analyze Metrics API', __name__)
 
-api = ExtendedApi(
+api = Api(
     api_blueprint,
     title='Analyze Metrics API documentation',
     version='1.0',
