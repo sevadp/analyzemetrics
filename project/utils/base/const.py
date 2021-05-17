@@ -5,14 +5,9 @@ from project import config
 
 config_object = getattr(config, "MainConfig")
 swagger_authorizations = {
-    'bearer': {
+    'admin_token': {
         'type': 'apiKey',
         'in': 'header',
-        'name': 'Authorization'
-    },
-    'admin': {
-        'type': 'apiKey',
-        'in': 'header',
-        'name': 'ADMIN-SIGNATURE'
-    },
+        'name': 'ADMIN'
+    }
 }
