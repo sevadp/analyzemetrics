@@ -2,8 +2,7 @@ import os
 
 from project import config
 
-
-config_object = getattr(config, os.environ['APP_SETTINGS'])
+config_object = getattr(config, "MainConfig")
 
 
 def check_admin_auth(request):

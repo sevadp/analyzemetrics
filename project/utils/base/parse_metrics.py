@@ -1,13 +1,15 @@
 from bs4 import BeautifulSoup
 from requests_html import HTMLSession
 
-metrics_url = "https://spymetrics.ru/ru/website/"
+from project import config
+
+config_object = getattr(config, "MainConfig")
 
 
 def parse_site(domain="amazon.com"):
     try:
         session = HTMLSession()
-        r = session.get(metrics_url + domain)
+        r = session.get(config_object.metrics_url + domain)
         r.html.render()
         soup = BeautifulSoup(r.html.html, "lxml")
 
