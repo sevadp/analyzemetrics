@@ -25,11 +25,11 @@ app.register_blueprint(api_blueprint, url_prefix='/api/v1')
 
 cors = CORS(app, resources={r"/*": {"origins": "*"}})
 
-# from errorhandlers import *
-# from project.services.parsing.instance import register_parse
-#
-# register_parse(api)
+from .errorhandlers import *
+from project.services.parsing.instance import register_parse
+
+register_parse(api)
 
 
 if __name__ == '__main__':
-    app.run(host="127.0.0.1", port=5000)
+    app.run()

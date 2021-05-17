@@ -9,17 +9,17 @@ api = Namespace('Parse', description='Parsing service')
 
 
 @api.route('/statistic')
-# @api.doc(security=["admin_token"])
-# @api.doc(
-#     params={
-#         'domain': {
-#             'description': 'Domain of site',
-#             'in': 'query',
-#             'type': 'string',
-#             'required': True,
-#         }
-#     }
-# )
+@api.doc(security=["admin_token"])
+@api.doc(
+    params={
+        'domain': {
+            'description': 'Domain of site',
+            'in': 'query',
+            'type': 'string',
+            'required': True,
+        }
+    }
+)
 class GetStatistic(Resource):
     # @admin_secure
     def get(self):

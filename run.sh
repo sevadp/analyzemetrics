@@ -1,0 +1,1 @@
+gunicorn -k eventlet -w 8 --no-sendfile project.app:app -b :5000
